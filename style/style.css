@@ -1,0 +1,179 @@
+body {
+	font-family:"Verdana", "Arial", sans-serif;
+	text-transform:uppercase;
+}
+
+#canvasPanel {
+	position:relative;
+	width:640px;
+	height:480px;
+}
+
+#canvasPanel canvas {
+	position:absolute;
+	left:0px;
+    top:0px;
+	width:640px;
+	height:480px;
+}
+
+#canvasOut {
+	z-index: 1;
+}
+
+#canvasOut2 {
+	z-index: 2;
+}
+
+#sidebar {
+	vertical-align: text-top;
+	height:100%;
+	width:250px;
+    background:#fff;
+    font-size:9px;
+}
+
+#optionsTop {
+	height: 20px;
+	line-height: 1.2em;
+}
+
+.newElement {
+	float:left;
+	line-height:16px;
+	padding: 3px;
+	margin:5px;
+	border: 1px solid #ccc;
+	font-size:9px;
+	text-transform:uppercase;
+	display: inline-block;
+  	vertical-align: middle;
+}
+
+.newElement .ui-icon {
+	float:right;
+	border-style: none;
+	outline-width: 0px;
+}
+
+.removeButton {
+	float:right;
+	border: none !important;
+	background: none !important;
+	vertical-align: middle;
+}
+
+#seqwrapper {
+	width: 890px;
+}
+
+#sequencer {
+	height: 200px;
+	overflow-x:scroll;
+	overflow-y: auto;
+	font-size:10px;
+	/*white-space:nowrap;*/
+	position: relative;
+}
+
+#sequencer .ui-state-highlight {
+	float:left;
+	margin: 0px;
+	padding: 5px;
+	width: 100px;
+	border: 1px solid #ccc;
+}
+
+#sequencer .sequenceItem {
+	margin: 0px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	width: 100px;
+	height: 25px;
+	position: absolute;
+	float: none;
+}
+
+#sequencer .sequenceSlot {
+	float:left;
+	padding: 5px;
+	border: 1px solid #ccc;
+	width: 100px;
+	position: absolute;
+	white-space: nowrap;
+}
+
+#sequencer .seq-drop-hover {
+	float:left;
+	padding: 5px;
+	border: 1px solid #ccc;
+	width: 100px;	
+	background-color: #
+}
+
+#optionsbox {
+	height:445px;
+   	overflow:auto;
+   	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	list-style-type: none;
+}
+
+#optionsbox ul {
+	
+}
+
+#optionsbox li {
+	margin: 0px;
+	padding: 5px;
+	width: 95%;
+	border: 1px solid #ccc;
+	background:#fff;
+	display: inline-block;
+}
+
+#optionsbox .ui-icon {
+	float:right;
+}
+
+#optionsbox .ui-state-highlight {
+	width: 95%;
+	height: 1.5em;
+	line-height: 1.2em;
+}
+
+#optionsbox .sort-disabled {
+	background:#eeeeee;
+}
+
+#optionsbox * {
+	font-size:9px;
+}
+
+#footer {
+	width:100%;
+}
+
+#footer .td {
+	width: 33%;
+}
+
+#headtrackStatus {
+	font-size:10px;
+}
+
+#toggleOptions {
+	font-size:10px;	
+}
+
+.optionName {
+	text-align: right;
+}
+
+div.line{
+	width: 1px;
+	height: 100%;
+	background: #f00;
+	position: absolute;
+}

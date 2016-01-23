@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title>scrubcam</title>
+	<script type="text/javascript" src="https://cdn.rawgit.com/auduno/headtrackr/master/headtrackr.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/objects.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+	<body>
+		<div style="display:none;" id="preload">
+			<img src="img/gif/snoop01.png" id="snoop01" />
+			<img src="img/gif/snoop02.png" id="snoop02" />
+			<img src="img/gif/snoop03.png" id="snoop03" />
+			<img src="img/gif/snoop04.png" id="snoop04" />
+			<img src="img/gif/snoop05.png" id="snoop05" />
+			<img src="img/gif/snoop06.png" id="snoop06" />
+			<img src="img/gif/snoop07.png" id="snoop07" />
+			<img src="img/gif/snoop08.png" id="snoop08" />
+			<img src="img/gif/snoop09.png" id="snoop09" />
+			<img src="img/gif/snoop10.png" id="snoop10" />
+			<img src="img/gif/snoop11.png" id="snoop11" />
+			<img src="img/gif/snoop12.png" id="snoop12" />
+			<img src="img/gif/snoop13.png" id="snoop13" />
+			<img src="img/gif/snoop14.png" id="snoop14" />
+			<img src="img/gif/snoop15.png" id="snoop15" />
+			<img src="img/gif/snoop16.png" id="snoop16" />
+			<img src="img/gif/snoop17.png" id="snoop17" />
+			<img src="img/gif/snoop18.png" id="snoop18" />
+			<img src="img/gif/snoop19.png" id="snoop19" />
+			<img src="img/gif/snoop20.png" id="snoop20" />
+			<img src="img/gif/snoop21.png" id="snoop21" />
+			<img src="img/gif/snoop22.png" id="snoop22" />
+			<img src="img/gif/snoop23.png" id="snoop23" />
+			<img src="img/gif/snoop24.png" id="snoop24" />
+			<img src="img/gif/snoop25.png" id="snoop25" />
+			<img src="img/gif/snoop26.png" id="snoop26" />
+			<img src="img/gif/snoop27.png" id="snoop27" />
+			<img src="img/gif/snoop28.png" id="snoop28" />
+			<img src="img/gif/snoop29.png" id="snoop29" />
+			<img src="img/gif/snoop30.png" id="snoop30" />
+			<img src="img/gif/snoop31.png" id="snoop31" />
+			<img src="img/gif/snoop32.png" id="snoop32" />
+			<img src="img/gif/snoop33.png" id="snoop33" />
+			<img src="img/gif/snoop34.png" id="snoop34" />
+			<img src="img/gif/snoop35.png" id="snoop35" />
+			<img src="img/gif/snoop36.png" id="snoop36" />
+			<img src="img/gif/snoop37.png" id="snoop37" />
+			<img src="img/gif/snoop38.png" id="snoop38" />
+			<img src="img/gif/snoop39.png" id="snoop39" />
+			<img src="img/gif/snoop40.png" id="snoop40" />
+			<img src="img/gif/snoop41.png" id="snoop41" />
+			<img src="img/gif/snoop42.png" id="snoop42" />
+			<img src="img/gif/snoop43.png" id="snoop43" />
+			<img src="img/gif/snoop44.png" id="snoop44" />
+			<img src="img/gif/snoop45.png" id="snoop45" />
+			<img src="img/gif/snoop46.png" id="snoop46" />
+			<img src="img/gif/snoop47.png" id="snoop47" />
+			<img src="img/gif/snoop48.png" id="snoop48" />
+			<img src="img/gif/snoop49.png" id="snoop49" />
+			<img src="img/gif/snoop50.png" id="snoop50" />
+			<img src="img/gif/snoop51.png" id="snoop51" />
+			<img src="img/gif/snoop52.png" id="snoop52" />
+			<img src="img/gif/snoop53.png" id="snoop53" />
+			<img src="img/gif/snoop54.png" id="snoop54" />
+			<img src="img/gif/snoop55.png" id="snoop55" />
+			<img src="img/gif/snoop56.png" id="snoop56" />
+			<img src="img/gif/snoop57.png" id="snoop57" />
+			<img src="img/gif/snoop58.png" id="snoop58" />
+
+			<img src="img/face.gif" id="imgfaceface" width="313" height="317"></img>
+			<img src="img/brkeogh.png" id="imgfacebrendan" width="92" height="107"></img>
+
+			<img src="img/flare-lo.png" id="flare" width="1024" height="1024"></img>
+			<img src="img/mlg.png" id="mlg" width="490" height="241"></img>
+			<img src="img/leaf.gif" id="leaf" width="324" height="341"></img>
+
+		</div>
+		<div style="display:none;">
+			<video autoplay id="video" width="640" height="480"></video>
+			<canvas id="canvasIn" width="640" height="480"></canvas>
+			<canvas id="canvasModified" width="640" height="480"></canvas>
+		</div>
+
+		<div align="center">
+			<table>
+				<tr>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="canvasPanel">
+						<canvas id="canvasOut" width="640" height="480" onclick="canvasClick()"></canvas>
+						<canvas id="canvasOut2" width="640" height="480" onclick="canvasClick()"></canvas>
+						</div>
+					</td>
+					<td style="overflow: hidden;">
+						<div id="sidebar">
+									<div id="optionsTop">
+										<input type="button" id="reset" value="reset" onclick="resetTransform()" />
+										<!--<input type="button" id="play" value="play" onclick="play()" /> -->
+										<div style="float:right;">
+											<button id="buttonNewSuperimpose" class="newElement"><span class="ui-icon ui-icon-circle-plus"></span><span>Image </span></button>
+											<button id="buttonNewText" class="newElement"><span class="ui-icon ui-icon-circle-plus"></span><span>Text </span></button>
+											<button id="buttonNewFilter" class="newElement"><span class="ui-icon ui-icon-circle-plus"></span><span>Filter </span></button>
+										</div>
+									</div>
+
+									<ul id="optionsBox">
+
+									</ul>
+						</div>
+
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div id="seqwrapper">
+							<div id="sequencer"></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<table id="footer"><tr>
+							<td>
+								<div id="headtrackStatus">Head tracking: Uninitialized</div>
+							</td>
+							<td style="text-align:center;"><button id="playButton">play</button>
+							</td>
+							<td style="text-align:right;">
+								<a href="#" id="toggleOptions">Customise</a>
+							</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
