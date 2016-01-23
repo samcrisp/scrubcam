@@ -17,6 +17,55 @@ var htracker;
 var options;
 var face;
 
+var screenshots = {
+	screenshots: new Array(),
+	counter: 0,
+	countInterval: null,
+	updateScreenshots: function() {
+		$('#screenshots').empty();
+		for (var i=0; i<this.screenshots.length; i++) {
+			var image = '<a href="' + this.screenshots[i] + '" download="screenshot' + i + '.png"><img src="' + this.screenshots[i] + '" style="width:133;height:100px"></a>';
+			$("#screenshots").append(image);
+		}
+		if (this.screenshots.length > 0)
+			$('#clearScreenshots').show();
+		else $('#clearScreenshots').hide();
+	},
+	countUp:function(){
+		if (screenshots.counter == 0) {
+			clearInterval(screenshots.countInterval);
+			$("#screenshotCounter").empty();
+		}
+		else {
+			$("#screenshotCounter").append(screenshots.counter + '...');
+			screenshots.counter--;
+		}
+	},
+	takeScreenshotWithCountdown: function(length) {
+		this.counter = length;
+		$("#screenshotCounter").empty();
+		this.countInterval = setInterval(this.countUp, 1000);
+		this.countUp();
+		$('#screenshotButton').prop('disabled',true);
+		setTimeout(this.takeScreenshot, length * 1000);
+	},
+	takeScreenshot: function() {
+		var canvasOut = document.getElementById("canvasOut");
+		var img = canvasOut.toDataURL("image/png");
+		screenshots.screenshots.push(img);
+
+		//window.open(img, "_blank");
+
+		screenshots.updateScreenshots();
+
+		$('#screenshotButton').prop('disabled',false);
+	},
+	clearScreenshots: function() {
+		this.screenshots = [];
+		this.updateScreenshots();
+	}
+}
+
 var sequencer = {
 	sequence:[
 		{time:1, element:1, turn:true},
@@ -241,6 +290,18 @@ function main(){
 	$('#playButton').click(function(){
 		sequencer.play();
 	});
+
+	$('#screenshotButton').click(function(){
+		screenshots.takeScreenshotWithCountdown(3);
+	});
+	$('#screenshotButtonImmediate').click(function(){
+		screenshots.takeScreenshot();
+	});
+
+	$('#clearScreenshots').click(function(){
+		screenshots.clearScreenshots();
+	});
+	screenshots.updateScreenshots();
 }
 
 //function that is called every time we want to analyse a new image/frame
@@ -401,12 +462,6 @@ function resetTransform() {
 		}
 		options[i].element.checked = options[i].activated = false;
 	}
-}
-
-function saveImage() {
-	var canvasOut = document.getElementById("canvasOut");
-	var img = canvasOut.toDataURL("image/png");
-	window.open(img, "_blank");
 }
 
 function onSelectionChange(i,current,box,onchange){

@@ -88,10 +88,6 @@
 			<table>
 				<tr>
 					<td>
-					</td>
-				</tr>
-				<tr>
-					<td>
 						<div id="canvasPanel">
 						<canvas id="canvasOut" width="640" height="480" onclick="canvasClick()"></canvas>
 						<canvas id="canvasOut2" width="640" height="480" onclick="canvasClick()"></canvas>
@@ -129,13 +125,25 @@
 							<td>
 								<div id="headtrackStatus">Head tracking: Uninitialized</div>
 							</td>
-							<td style="text-align:center;"><button id="playButton">play</button>
+							<td style="text-align:center;"><button id="playButton">play</button></td>
+							<td style="text-align:right;">
+								<button id="screenshotButtonImmediate">screenshot</button>
+								<button id="screenshotButton">with timer</button>
+								<div id="screenshotCounter"></div>
 							</td>
 							<td style="text-align:right;">
 								<a href="#" id="toggleOptions">Customise</a>
 							</td>
 							</tr>
 						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div id="screenshotwrapper">
+							<div id="screenshots"></div>
+							<button id="clearScreenshots">clear screenshots</button>
+						</div>
 					</td>
 				</tr>
 			</table>
