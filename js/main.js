@@ -91,7 +91,7 @@ var sequencer = {
 			else if (typeof ev.value == 'boolean') {
 				sequencerChangeCheckbox(ev.element, ev.key, ev.value);
 			}
-			
+
 			console.log(ev);
 			this.currentIndex++;
 			if (!this.sequence[this.currentIndex]) break;
@@ -223,7 +223,7 @@ function main(){
 
 	// Initialise webcam
 	video = document.querySelector("#video");
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 	window.URL = window.URL || window.webkitURL;
 	navigator.getUserMedia({video:true, audio:false}, function (stream){
 		video.src = window.URL.createObjectURL(stream);
@@ -277,7 +277,7 @@ function analyse(){
 	}
 	else contextModified.translate(-height/2, -width/2);
 	contextModified.drawImage(video, 0, 0, width, height);
-	
+
 	// Run all update functions which run late
 	for (var u in options) {
 		if(typeof options[u].update == 'function') {
@@ -286,7 +286,7 @@ function analyse(){
 			}
 		}
 	}
-	
+
 	frame = contextModified.getImageData(0,0,width,height);
 	contextOut.putImageData(frame, 0, 0);
 
@@ -459,7 +459,7 @@ function updateSequencer() {
 		else {
 			//listItem += "turn " + (sequencer.sequence[i].turn ? "on" : "off");
 			for (var j=i+1; j<sequencer.sequence.length; j++) {
-				
+
 				if (sequencer.sequence[i].element == sequencer.sequence[j].element && (typeof sequencer.sequence[j].turn == 'boolean') && !sequencer.sequence[j].turn) {
 					duration = (j-i-(j==i+1?0:1))*itemWidth - 11;
 					console.log(duration + ' ' + i);
@@ -524,7 +524,7 @@ function updateOptions() {
 		if (!options[i].immovable) listItem += '<button class="removeButton"></button>';
 		listItem += '<span class="ui-icon ui-icon-carat-1-s"></span><div><table>';
 		// Begin with this option on if the Object is activated when instantiated
-		
+
 		if (options[i].options) {
 			// For each object in options, create a new input defined by the attributes given
 			// Must have a "name" attribute
@@ -576,7 +576,7 @@ function updateOptions() {
 				for (var attribute in options[i].options[j]) {
 					if (attribute == 'name') continue;
 					thisOption+= attribute + '="' + options[i].options[j][attribute] + '" ';
-				
+
 				}
 				thisOption += 'id="option' + i + options[i].options[j].name + '" onchange="'+functionName+'('+i+',&quot;' + options[i].options[j].name + '&quot;)"'
 				if (options[i].options[j].type == 'checkbox') {

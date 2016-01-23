@@ -36,7 +36,7 @@ var Rotation = function (options) {
 
 		if (this.value >= this.magnitude) this.direction = false;
 		else if (this.value <= -this.magnitude) this.direction = true;
-		
+
 		contextModified.rotate(this.value * Math.PI/180);
 	}
 	this.centerOnFace = true;
@@ -94,7 +94,7 @@ var Face = function(options){
 	  	htracker.init(video, canvasIn);
 	  	htracker.start();
 
-		document.addEventListener('headtrackrStatus', 
+		document.addEventListener('headtrackrStatus',
 		  function (event) {
 		  	$('#headtrackStatus').text('Head tracking: ' + event.status);
 		    // if (event.status == "getUserMedia") {
@@ -172,7 +172,7 @@ var Superimpose = function(options) {
 
 			if (this.value >= this.magnitude) this.direction = false;
 			else if (this.value <= -this.magnitude) this.direction = true;
-			
+
 			context.rotate(this.value * Math.PI/180);
 		} else this.value = 0;
 		context.translate(-width / 2, -height / 2);
@@ -196,7 +196,7 @@ var Superimpose = function(options) {
 	this.img.push(document.getElementById("flare"));
 	this.img.push({id:"snoop",frames:new Array(),current:0,width:77,height:201});
 	var img = this.img;
-	$('[id^="snoop"').each(function () {
+	$('[id^="snoop"]').each(function () {
 		this.width = 77;
 		this.height = 201;
 		img[3].frames.push(this);
@@ -249,14 +249,14 @@ var Text = function(options){
 
 			if (this.value >= this.magnitude) this.direction = false;
 			else if (this.value <= -this.magnitude) this.direction = true;
-			
+
 			context.rotate(this.value * Math.PI/180);
 		} else this.value = 0;
 		context.translate(-this.x, -this.y);
 		if (this.thickness > 0) {
 			context.strokeStyle = this.outline;
 			context.lineWidth = this.thickness;
-			context.strokeText(this.text, this.x, this.y);	
+			context.strokeText(this.text, this.x, this.y);
 		}
 		context.fillText(this.text, this.x, this.y);
 		context.restore();
